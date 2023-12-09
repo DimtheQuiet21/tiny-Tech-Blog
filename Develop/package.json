@@ -1,0 +1,32 @@
+{
+  "name": "museum-paintings",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "seed": "node seeds/index.js",
+    "mysql:down": "docker-compose -f mysql.yml down -v",
+    "mysql:stop": "docker-compose -f mysql.yml stop -v",
+    "mysql:start": "docker-compose -f mysql.yml start -v",
+    "mysql:up": "docker-compose -f mysql.yml up -d",
+    "mysql:reset": "npm run mysql:down && npm run mysql:up",
+    "mysql": "mysql -u root -p -h 127.0.0.1 -P 3306"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "connect-session-sequelize": "^7.0.4",
+    "dayjs": "^1.11.10",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-handlebars": "^5.2.0",
+    "express-session": "^1.17.1",
+    "handlebars": "^4.7.6",
+    "mysql2": "^2.2.5",
+    "nodemon": "^3.0.2",
+    "sequelize": "^6.3.5"
+  }
+}
