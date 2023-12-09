@@ -5,18 +5,19 @@ const Tag = require('./Tag');
 
 User.hasMany(BlogPost, {
   foreignKey: 'user_id',
+  onDelete: 'CASCADE'
 });
 
 BlogPost.belongsTo(User, {
-  foreignKey: 'user_id',
+  foreignKey: 'poster_id',
 });
 
 Tag.hasMany(BlogPost, {
-    foreignKey: 'blogpost_id',
+    foreignKey: 'blog_id'  
 });
   
 BlogPost.hasMany(Tag, {
-    foreignKey: 'tag_id',
+  foreignKey: 'tag_id'
 });
 
 module.exports = { BlogPost, Tag, User };

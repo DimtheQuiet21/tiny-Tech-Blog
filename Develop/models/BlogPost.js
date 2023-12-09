@@ -15,6 +15,26 @@ BlogPost.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    poster_id: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      references: {
+        model: 'user',
+        key: 'id',
+      }
+    },
+    tag_id:{
+      type: DataTypes.Array(DataTypes.INTEGER),
+      allowNull: true,
+      references: {
+        model: 'tag',
+        key: 'id',
+      }
+    },
+    likes:{
+      type: DataTypes.INTEGER,
+      allowNull:false
+    }
   },
   {
     sequelize,
@@ -24,4 +44,4 @@ BlogPost.init(
   }
 );
 
-module.exports = Gallery;
+module.exports = BlogPost;

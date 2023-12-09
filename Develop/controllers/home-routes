@@ -6,15 +6,14 @@ const getPast = require('../utils/pastdays.js')
 
 
 /*
-The first get call will call on page load and summon all the blog posts from the past seven days.
+The first get call will call on page load and summon the past 20 most recent blog posts.
 We have a middle ware function (to flex) and call that day information from Day JS and use it as a query parameter
 */
 router.get('/', async (req, res ) => {
     try { 
-        const today = dayjs();
-        const days_ago = today.subtract(1, 'week');
         const dbBlogPostData = await BlogPost.findAll({
-        where:{post_date :{[Op.gte]: days_ago}},
+        order: [Task, 'createdAt', 'DESC'],
+        limit: 20,
         include: [
           {
             model: Tag,
