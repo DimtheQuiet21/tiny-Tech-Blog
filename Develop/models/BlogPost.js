@@ -15,6 +15,10 @@ BlogPost.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    description:{
+      type:DataTypes.TEXT,
+      allowNull: false
+    },
     poster_id: {
       type: DataTypes.STRING,
       allowNull: false,
