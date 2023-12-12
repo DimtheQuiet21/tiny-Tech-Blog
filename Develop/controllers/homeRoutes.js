@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Gallery, Painting } = require('../models');
+const { BlogPost } = require('../models/index.js');
 // TODO: Import the custom middleware
 const getAuth = require('../utils/auth.js')
 const getPast = require('../utils/pastdays.js')
@@ -34,4 +34,12 @@ router.get('/', async (req, res ) => {
     }
   });
 
+  router.get('/login', (req, res) => {
+    
+    if (req.session.logged_in) {
+    res.redirect('/');
+      return;
+    }
+    res.render('login');
+  });
   module.exports = router;
