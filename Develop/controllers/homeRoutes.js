@@ -1,8 +1,8 @@
 const router = require('express').Router();
-const { BlogPost } = require('../models/index.js');
+const { BlogPost, User } = require('../models/index.js');
 // TODO: Import the custom middleware
-const getAuth = require('../utils/auth.js')
-const getPast = require('../utils/pastdays.js')
+const getAuth = require('../utils/auth.js');
+const getPast = require('../utils/pastdays.js');
 
 
 /*
@@ -12,18 +12,16 @@ We have a middle ware function (to flex) and call that day information from Day 
 router.get('/', async (req, res ) => {
     try { 
         const dbBlogPostData = await BlogPost.findAll({
-        order: [Task, 'createdAt', 'DESC'],
-        limit: 20,
-        include: [
-          {
-            model: Tag,
-            attributes: ['tag_name'],
-          },
+        include: User,
+        order: [
+          ['createdAt', 'ASC']
         ],
+        limit: 20,
       });
       const blog_posts = dbBlogPostData.map((posts) =>
       posts.get({ plain: true })
     );
+    console.log(blog_posts)
     res.render('homepage', {
         blog_posts,
         loggedIn: req.session.loggedIn,

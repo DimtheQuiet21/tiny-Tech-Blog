@@ -1,0 +1,27 @@
+[
+    {   
+        "title":"The First Post",
+        "description":" This post is the first post of the database. You can love it. You can hate it. But here it is.",
+        "poster_id":"1",
+        "likes":1678
+    },  
+    {   
+        "title":"The Second Post",
+        "description":"Gonna be Real. I don't know what to say here! It's pretty cool though!",
+        "poster_id":"2",
+        "likes":5
+    },  
+    {   
+        "title":"The Greatest Post",
+        "description":"This is the greatest post on this entire blog site. Follow me kids and I'll show you da wae.",
+        "poster_id":3,
+        "likes":143
+    },  
+    {   
+        "title":"The Following Post",
+        "description":"Okay, now that I think about it. Maybe this wasn't the greatest post of all time. But surely it's gotta be like .... top five or something",
+        "poster_id":3,
+        "likes":23
+    }
+]
+
