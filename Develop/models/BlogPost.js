@@ -20,24 +20,16 @@ BlogPost.init(
       allowNull: false
     },
     poster_id: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       allowNull: false,
       references: {
         model: 'user',
         key: 'id',
       }
     },
-    tag_id:{
-      type: DataTypes.Array(DataTypes.INTEGER),
-      allowNull: true,
-      references: {
-        model: 'tag',
-        key: 'id',
-      }
-    },
     likes:{
       type: DataTypes.INTEGER,
-      allowNull:false
+      allowNull:true
     }
   },
   {

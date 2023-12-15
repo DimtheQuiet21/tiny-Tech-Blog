@@ -1,18 +1,10 @@
-<section class="painting">
-  <img src="/images/{{painting.filename}}" alt="{{painting.description}}">
-  <div class="painting-details">
-    <h3>{{painting.title}}</h3>
-    <p>By: {{painting.artist}}</p>
-  </div>
-</section>
-
 <div class = "container row justify-content-md-center">
         <div class = "card" style = "width: 75%;">
             <div class = "container row align-items-end ">
-                <h3 class = "card-title col-sm">Title</h3>
-                <h6 class = "card-title col-sm"> Posted by AFL on 3/3/3000</h6>
+                <h3 class = "card-title col-sm">{{title}}</h3>
+                <h6 class = "card-title col-sm"> Posted by {{user.name}} on {{createdAt}}</h6>
             </div>
             <div class = "card-body">
-         <p class = "justify-content-center"> This is the description of the blogpost.</p>
+         <p class = "justify-content-center"> {{description}}</p>
     </div>
 </div>

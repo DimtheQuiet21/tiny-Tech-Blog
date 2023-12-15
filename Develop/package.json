@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "seed": "node seeds/index.js",
+    "seed": "node seeds/seed.js",
     "mysql:down": "docker-compose -f mysql.yml down -v",
     "mysql:stop": "docker-compose -f mysql.yml stop -v",
     "mysql:start": "docker-compose -f mysql.yml start -v",
@@ -20,6 +20,7 @@
     "bcrypt": "^5.0.0",
     "connect-session-sequelize": "^7.0.4",
     "dayjs": "^1.11.10",
+    "docker": "^1.0.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-handlebars": "^5.2.0",
