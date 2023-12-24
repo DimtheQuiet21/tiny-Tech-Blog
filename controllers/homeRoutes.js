@@ -24,7 +24,7 @@ router.get('/', async (req, res ) => {
     console.log(blog_posts)
     res.render('homepage', {
         blog_posts,
-        loggedIn: req.session.loggedIn,
+        logged_in: req.session.logged_in,
       });
     } catch (err) {
       console.log(err);
@@ -32,12 +32,20 @@ router.get('/', async (req, res ) => {
     }
   });
 
-  router.get('/login', (req, res) => {
-    
-    if (req.session.logged_in) {
-    res.redirect('/');
-      return;
+  router.get('/login', async (req, res) => { 
+    try {
+      // const user = await User.findOne({where: {id:req.session.user_id}} )
+      // const user_id = user ? user.id : null;
+      if (req.session.logged_in) {
+        res.redirect('/');
+          return;
+        }
+      res.render('login', {
+          //user_id
+      });
+    } catch (error) {
+      console.error('Error retrieving user:', error);
+      res.status(500).send('Internal Server Error');
     }
-    res.render('login');
   });
   module.exports = router;
