@@ -13,23 +13,19 @@ router.get('/', getAuth, async (req, res) => {
     try { 
         const dbBlogPostData = await BlogPost.findAll({
         where: {poster_id:req.session.user_id},    
-        order: [Task, 'createdAt', 'DESC'],
-        include: [
-          {
-            model: Tag,
-            attributes: ['tag_name'],
-          },
-        ],
+        order: [
+          ['createdAt', 'ASC']
+        ]
       });
       const blog_posts = dbBlogPostData.map((posts) =>
       posts.get({ plain: true })
     );
     res.render('dashboard', {
         blog_posts,
-        loggedIn: req.session.loggedIn,
+        logged_in: req.session.logged_in,
       });
     } catch (err) {
-      console.log(err);
+      console.error("Error rendering the dashboard", err);
       res.status(500).json(err);
     }
   });

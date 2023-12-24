@@ -1,0 +1,12 @@
+<br>
+<header class = "d-flex justify-content-center">
+    <h2>
+        Welcome to the Dashboard
+    </h2>
+</header>
+<br>
+
+{{#each blog_posts as |blog-post|}}
+{{> blog-post-detail}}
+<br>
+{{/each}}
