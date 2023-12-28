@@ -36,11 +36,7 @@ const signupFormHandler = async (event) => {
     });
 
     if (response.ok) {
-      const response = await fetch('/', {
-        method: 'GET',
-        headers: {'Content-Type': 'application/json' },
-      });
-      response;
+      document.location.replace('/');
     } else {
       alert('Failed to Sign Up');
     }
