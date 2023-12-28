@@ -1,20 +1,20 @@
 const router = require('express').Router();
 const { BlogPost } = require('../../models/index.js');
 
-router.get('/:id', async (req, res ) => {
+router.get('/:id', async (req, res) => {
     try { 
         const dbBlogPostData = await BlogPost.findOne({
         where: {id:req.params.id}
       });
-      const blog_posts = dbBlogPostData.map((posts) =>
-      posts.get({ plain: true })
-    );
-    res.render('homepage', {
-        blog_posts,
+      //console.log("here",req.params.id)
+      const blog_post = dbBlogPostData.get({ plain: true })
+      console.log("here",blog_post)
+      res.render('blog-post', {
+        blog_post,
         loggedIn: req.session.loggedIn,
       });
     } catch (err) {
-      console.log(err);
+      console.error(err);
       res.status(500).json(err);
     }
   });
