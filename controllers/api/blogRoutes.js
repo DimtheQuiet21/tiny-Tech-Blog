@@ -6,9 +6,8 @@ router.get('/:id', async (req, res) => {
         const dbBlogPostData = await BlogPost.findOne({
         where: {id:req.params.id}
       });
-      //console.log("here",req.params.id)
       const blog_post = dbBlogPostData.get({ plain: true })
-      console.log("here",blog_post)
+      console.log(blog_post)
       res.render('blog-post', {
         blog_post,
         loggedIn: req.session.loggedIn,

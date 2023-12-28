@@ -1,7 +1,12 @@
 <br>
 <header class = "d-flex justify-content-center">
-    <h2>
-        {{blog_post.title}}
-    </h2>
+    <h2>{{blog_post.title}}</h2>
 </header>
+<div>
+    <h4>Created On: {{blog_post.createdAt}}</h4>
+    <h6>Last Updated: {{blog_post.updatedAt}}</h6>
+</div>
 <br>
+<div>
+    <p>{{blog_post.description}}</p>
+</div>
