@@ -1,7 +1,34 @@
 <br>
-<header class = "d-flex justify-content-center">
-    <h2>
-        {{blog_post.title}}
-    </h2>
+<header class = "d-flex flex-column justify-content-center">
+    <h2>{{blog_post.title}}</h2>
+    <h4>Created by: {{blog_post.user.username}}</h4>
 </header>
+<div>
+    <h4>Created On: {{blog_post.createdAt}}</h4>
+    <h6>Last Updated: {{blog_post.updatedAt}}</h6>
+</div>
 <br>
+
+<div>
+    <p>{{blog_post.description}}</p>
+</div>
+
+<div id = "comment_section">
+{{#if logged_in}}
+    <button class = "btn btn-primary" id = "comment_btn" onclick = "create_comment()">Leave a Comment</button>
+    <br></br>
+{{else}}
+    <button class = "btn btn-primary" id = "sign_in_btn" onclick="window.location.href='/login'">Sign in to Leave a Comment</button>
+    <br></br>
+{{/if}}
+
+
+
+{{#each blog_post.Comments as |comment|}}
+{{> comment-detail}}
+<br>
+{{/each}}
+
+</div>
+
+

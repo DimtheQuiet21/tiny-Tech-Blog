@@ -32,7 +32,7 @@ router.get('/', async (req, res ) => {
     }
   });
 
-  router.get('/login', async (req, res) => { 
+router.get('/login', async (req, res) => { 
     try {
       // const user = await User.findOne({where: {id:req.session.user_id}} )
       // const user_id = user ? user.id : null;
