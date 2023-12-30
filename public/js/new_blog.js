@@ -24,3 +24,33 @@ async function submit_blogpost (event) {
         console.error('Error creating blog post:', response.status, response.statusText);
     }
 };
+
+async function update_post (event) {
+    event.preventDefault();
+
+    async function submit_update () {
+        title = titlebox.val();
+        description = descriptionbox.val();
+
+        const response = await fetch(`/api/blogs/`, {
+            method: 'PUT',
+            body: JSON.stringify({
+                "title":title,
+                "description":description,
+                // TO DO EVENTUALLY update the code to not reset the LIKES to 0 on an updtate call
+            }),
+            headers: { 'Content-Type': 'application/json' },
+        });
+    
+        if (response.ok) {
+            document.location.replace(`/dashboard/`)
+        } else {
+            console.error('Error creating blog post:', response.status, response.statusText);
+        }
+    }
+
+    let title_text = $("#blogpost_title").text(); //The original
+    let description_text = $("#blogpost_description").text(); // The original
+
+
+}

@@ -1,6 +1,14 @@
 <br>
 <header class = "d-flex flex-column justify-content-center">
-    <h2>{{blog_post.title}}</h2>
+    <div class = "d-flex flex-row justify-content-between">
+        <h2 id = "blogpost_title">{{blog_post.title}}</h2>
+        {{#if owner}}
+        <div class = "d-flex flex-row">
+            <button class = "btn btn-secondary" onclick = "update_post(event)">Update</button>
+            <button class = "btn btn-danger" onclick = "delete_post(event)">Delete</button>
+        </div>
+        {{/if}}
+    </div>
     <h4>Created by: {{blog_post.user.username}}</h4>
 </header>
 <div>
@@ -10,7 +18,7 @@
 <br>
 
 <div>
-    <p>{{blog_post.description}}</p>
+    <p id = "blogpost_description">{{blog_post.description}}</p>
 </div>
 
 <div id = "comment_section">
