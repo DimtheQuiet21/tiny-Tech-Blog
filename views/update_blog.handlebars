@@ -1,0 +1,10 @@
+<br></br>
+<div class = "d-flex flex-column justify-content-center">
+    <h4>Update Your Post Below</h4>
+    <br></br>
+    <div class = "card">
+        <input placeholder="Blogpost Title" id = "blog_title" value="{{blog_post.title}}">
+        <textarea style = "min-height: 200px;" placeholder="Type your blogpost here" id = "blog_description">{{blog_post.description}}</textarea>
+    </div>
+    <button class = "btn btn-primary" onclick = "submit_update(event)" id = "submit_button">Submit</button>
+</div>
