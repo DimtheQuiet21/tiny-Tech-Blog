@@ -61,6 +61,21 @@ router.post('/:id', async (req,res) => {
   };
 })
 
+router.delete('/:id', async (req,res) => {
+  try {
+    const delete_blog = await BlogPost.destroy({
+      where: {
+        id : req.params.id
+      }
+    });
+    console.log(delete_blog);
+    res.status(204).json(delete_blog);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json(err);
+  };
+});
+
 router.get('/', async (req,res) => {
   try {
     res.render('new_blog', {

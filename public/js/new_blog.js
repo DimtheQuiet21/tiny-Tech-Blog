@@ -1,6 +1,11 @@
+const currentPath = window.location.pathname;
+const pathSegments = currentPath.split('/');
+const blogId = pathSegments[pathSegments.length - 1];
+
 async function submit_blogpost (event) {
 
     event.preventDefault();
+    console.log("firing")
     const title = $("#blog_title").val();
     const description = $("#blog_description").val();
 
@@ -27,31 +32,17 @@ async function submit_blogpost (event) {
 
 async function update_post (event) {
     event.preventDefault();
-    const currentPath = window.location.pathname;
-    const pathSegments = currentPath.split('/');
-    const blogId = pathSegments[pathSegments.length - 1];
-
-    // let title_text = $("#blogpost_title").text(); //The original
-    // let description_text = $("#blogpost_description").text(); // The original
-    // localStorage.setItem("title",title_text);
-    // localStorage.setItem("description",description_text);
-
+    console.log("firing");
     document.location.replace(`/api/blogs/update/${blogId}`);
-}
+};
 
 async function submit_update (event) {
 
     event.preventDefault();
-
     const titlebox = $("#blog_title");
     const descriptionbox = $("#blog_description");
-
     const title = titlebox.val();
     const description = descriptionbox.val();
-
-    const currentPath = window.location.pathname;
-    const pathSegments = currentPath.split('/');
-    const blogId = pathSegments[pathSegments.length - 1];
 
     const response = await fetch(`/api/blogs/update/${blogId}`, {
         method: 'PUT',
@@ -68,4 +59,19 @@ async function submit_update (event) {
     } else {
         console.error('Error updating blog post:', response.status, response.statusText);
     }
-}
+};
+
+async function delete_post (event) {
+    event.preventDefault();
+    console.log(blogId);
+    const url = `./${blogId}`;
+    const response = await fetch (url, {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' }
+    });
+    if (response.ok) {
+        document.location.replace('/dashboard/');
+    } else {
+        console.error('Error deleting blog post:', response.status, response.statusText);
+    };
+};
