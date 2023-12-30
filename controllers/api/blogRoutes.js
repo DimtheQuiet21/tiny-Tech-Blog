@@ -25,10 +25,18 @@ router.get('/:id', async (req, res) => {
         where: {id:req.params.id}
       });
       const blog_post = dbBlogPostData.get({ plain: true })
+      const ownership = () => {
+        if (blog_post.poster_id === req.session.user_id){
+          return true
+        } else {
+          return false
+        }
+      }
       console.log(blog_post)
       res.render('blog-post', {
         blog_post,
         logged_in: req.session.logged_in,
+        owner: ownership()
       });
     } catch (err) {
       console.error(err);
@@ -78,4 +86,17 @@ router.post('/', async (req,res) => {
   }
 })
 
+router.put('/', async (req,res) => { // TO DO EVENTUALLY update the code to not reset the LIKES to 0 on an updtate call
+  try {
+    const blog_data = req.body;
+    blog_data.poster_id = req.session.user_id;
+    blog_data.likes = 0;
+    const posted_blog = await BlogPost.create(blog_data);
+    console.log(posted_blog);
+    res.status(201).json(posted_blog);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json(err);
+  }
+}) 
 module.exports = router;
