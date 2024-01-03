@@ -3,15 +3,9 @@ require('dotenv').config();
 
 let sequelize;
 
-if (process.env.JAWSDB_URL) {
-  sequelize = new Sequelize(process.env.JAWSDB_URL, {
+if (process.env.JAWSDB_COBALT_URL) {
+  sequelize = new Sequelize(process.env.JAWSDB_COBALT_URL, {
     dialect: 'mysql',
-    dialectOptions: {
-      "ssl": {
-        "require": true,
-        "rejectUnauthorized": true
-      }
-    },
     logging: true, // Disable logging for production (you can enable it for debugging)
   });
 } else {
