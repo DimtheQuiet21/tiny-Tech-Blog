@@ -9,7 +9,7 @@ if (process.env.DATABASE_URL) {
     logging: true, // Disable logging for production (you can enable it for debugging)
   });
 } else {
-  const sequelize = new Sequelize(
+  sequelize = new Sequelize(
     process.env.DB_NAME,
     process.env.DB_USER,
     process.env.DB_PASSWORD,
