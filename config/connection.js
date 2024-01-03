@@ -7,12 +7,6 @@ if (process.env.JAWSDB_COBALT_URL) {
   sequelize = new Sequelize(process.env.JAWSDB_COBALT_URL, {
     dialect: 'mysql',
     logging: true, // Disable logging for production (you can enable it for debugging)
-    dialectOptions: {
-      "ssl": {
-        "require": true,
-        "rejectUnauthorized": true
-      }
-    }
   });
 } else {
   sequelize = new Sequelize(
